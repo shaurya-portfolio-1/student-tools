@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CGPA Calculator - Calculate CGPA from Grades and Credits</title>
+
+<meta
+name="description"
+content="Free CGPA calculator for students. Calculate your CGPA using subject grade points and credits with our simple online CGPA calculator."
+>
+
+<meta
+name="robots"
+content="index, follow"
+>
+
+<link
+rel="canonical"
+href="https://shaurya-portfolio-1.github.io/student-tools/calculators/cgpa-calculator/"
+>
+
+<meta
+property="og:title"
+content="CGPA Calculator - Calculate CGPA Online"
+>
+
+<meta
+property="og:description"
+content="Calculate your CGPA from subject grade points and credits using this free online CGPA calculator."
+>
+
+<meta
+property="og:type"
+content="website"
+>
+
+<meta
+property="og:url"
+content="https://shaurya-portfolio-1.github.io/student-tools/calculators/cgpa-calculator/"
+>
+
+<link
+rel="stylesheet"
+href="../../style.css"
+>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "CGPA Calculator",
+  "url": "https://shaurya-portfolio-1.github.io/student-tools/calculators/cgpa-calculator/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any",
+  "description": "Free online CGPA calculator for students."
+}
+</script>
+
+
+<style>
+
+.cgpa-box {
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 25px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    background: #ffffff;
+}
+
+.subject-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr auto;
+    gap: 10px;
+    margin-bottom: 12px;
+    align-items: center;
+}
+
+.subject-row input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.remove-button {
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #ffffff;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.add-button,
+.calculate-button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #111827;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.result-box {
+    display: none;
+    margin-top: 25px;
+    padding: 25px;
+    border-radius: 10px;
+    background: #f3f4f6;
+    text-align: center;
+}
+
+.result-box.show {
+    display: block;
+}
+
+.cgpa-result {
+    font-size: 38px;
+    font-weight: 700;
+    margin-top: 8px;
+}
+
+.error {
+    color: #b91c1c;
+    font-weight: 600;
+}
+
+.formula {
+    margin: 20px 0;
+    padding: 18px;
+    background: #f8fafc;
+    border-left: 4px solid #111827;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+@media (max-width: 650px) {
+
+    .subject-row {
+        grid-template-columns: 1fr;
+        padding: 15px;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+    }
+
+    .remove-button {
+        width: 100%;
+    }
+
+    .cgpa-box {
+        padding: 18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+<div class="container header-content">
+
+<a
+href="../../index.html"
+class="logo"
+>
+Student Tools
+</a>
+
+
+<nav aria-label="Main navigation">
+
+<a href="../../index.html">
+Home
+</a>
+
+<a href="../../index.html#calculators">
+Calculators
+</a>
+
+<a href="../../index.html#guides">
+Guides
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<main>
+
+
+<section class="section">
+
+<div class="container">
+
+
+<nav
+class="breadcrumb"
+aria-label="Breadcrumb"
+>
+
+<a href="../../index.html">
+Student Tools
+</a>
+
+<span aria-hidden="true">
+→
+</span>
+
+<span>
+CGPA Calculator
+</span>
+
+</nav>
+
+
+<p class="eyebrow">
+FREE ONLINE CGPA CALCULATOR
+</p>
+
+
+<h1>
+CGPA Calculator
+</h1>
+
+
+<p class="section-intro">
+
+Calculate your CGPA using subject grade points and
+credits with this free online CGPA calculator.
+
+</p>
+
+
+<div class="cgpa-box">
+
+
+<h2>
+Enter Your Subjects
+</h2>
+
+
+<p>
+Enter the grade point and credit value for each subject.
+The calculator uses a credit-weighted CGPA formula.
+</p>
+
+
+<div
+id="subjects"
+>
+
+
+<div class="subject-row">
+
+<input
+type="text"
+placeholder="Subject name"
+aria-label="Subject name"
+>
+
+<input
+type="number"
+placeholder="Grade point"
+aria-label="Grade point"
+min="0"
+max="10"
+step="0.01"
+>
+
+<input
+type="number"
+placeholder="Credits"
+aria-label="Credits"
+min="0.1"
+step="0.1"
+>
+
+<button
+class="remove-button"
+onclick="removeSubject(this)"
+>
+Remove
+</button>
+
+</div>
+
+
+<div class="subject-row">
+
+<input
+type="text"
+placeholder="Subject name"
+aria-label="Subject name"
+>
+
+<input
+type="number"
+placeholder="Grade point"
+aria-label="Grade point"
+min="0"
+max="10"
+step="0.01"
+>
+
+<input
+type="number"
+placeholder="Credits"
+aria-label="Credits"
+min="0.1"
+step="0.1"
+>
+
+<button
+class="remove-button"
+onclick="removeSubject(this)"
+>
+Remove
+</button>
+
+</div>
+
+
+<div class="subject-row">
+
+<input
+type="text"
+placeholder="Subject name"
+aria-label="Subject name"
+>
+
+<input
+type="number"
+placeholder="Grade point"
+aria-label="Grade point"
+min="0"
+max="10"
+step="0.01"
+>
+
+<input
+type="number"
+placeholder="Credits"
+aria-label="Credits"
+min="0.1"
+step="0.1"
+>
+
+<button
+class="remove-button"
+onclick="removeSubject(this)"
+>
+Remove
+</button>
+
+</div>
+
+
+</div>
+
+
+<button
+class="add-button"
+onclick="addSubject()"
+>
++ Add Subject
+</button>
+
+
+<button
+class="calculate-button"
+onclick="calculateCGPA()"
+>
+Calculate CGPA
+</button>
+
+
+<div
+id="result"
+class="result-box"
+>
+</div>
+
+
+</div>
+
+
+<article>
+
+
+<h2>
+What is CGPA?
+</h2>
+
+<p>
+
+CGPA stands for Cumulative Grade Point Average.
+It is commonly used by educational institutions to
+represent a student's overall academic performance.
+
+</p>
+
+
+<h2>
+How is CGPA calculated?
+</h2>
+
+<p>
+
+When subjects have different credit values, CGPA can
+be calculated using a credit-weighted average of the
+grade points.
+
+</p>
+
+
+<div class="formula">
+
+CGPA = Σ(Grade Point × Credit) ÷ Σ(Credits)
+
+</div>
+
+
+<h3>
+Example
+</h3>
+
+<p>
+
+Suppose a student has three subjects:
+
+</p>
+
+<p>
+
+Mathematics: Grade Point 9, Credits 4<br>
+Physics: Grade Point 8, Credits 3<br>
+English: Grade Point 10, Credits 2
+
+</p>
+
+<p>
+
+The weighted calculation is:
+
+</p>
+
+<div class="formula">
+
+CGPA =
+(9 × 4 + 8 × 3 + 10 × 2)
+÷
+(4 + 3 + 2)
+
+</div>
+
+<p>
+
+The result is approximately <strong>8.89</strong>.
+
+</p>
+
+
+<h2>
+CGPA Calculator for Students
+</h2>
+
+<p>
+
+Students can use this calculator to estimate their
+credit-weighted CGPA from subject grade points and
+credit values.
+
+</p>
+
+
+<h2>
+CGPA vs Percentage
+</h2>
+
+<p>
+
+CGPA and percentage are different ways of representing
+academic performance. The conversion between CGPA and
+percentage depends on the grading system and institution.
+
+</p>
+
+<p>
+
+Therefore, students should check their school, college
+or university's official conversion rule before converting
+CGPA to percentage.
+
+</p>
+
+
+<h2>
+Frequently Asked Questions
+</h2>
+
+
+<h3>
+What does CGPA mean?
+</h3>
+
+<p>
+
+CGPA means Cumulative Grade Point Average. It represents
+a student's overall academic performance using grade points.
+
+</p>
+
+
+<h3>
+How do I calculate CGPA with credits?
+</h3>
+
+<p>
+
+Multiply each subject's grade point by its credit value,
+add the results and divide by the total number of credits.
+
+</p>
+
+
+<h3>
+Can I calculate CGPA without credits?
+</h3>
+
+<p>
+
+Yes, if all subjects have equal weight, an ordinary average
+of the grade points can be used. However, if subjects have
+different credits, a credit-weighted calculation is more
+appropriate.
+
+</p>
+
+
+<h3>
+Is CGPA the same as percentage?
+</h3>
+
+<p>
+
+No. CGPA and percentage are different grading measures.
+The correct conversion depends on the institution's rules.
+
+</p>
+
+
+<h2>
+More Student Calculators
+</h2>
+
+<p>
+
+Use our
+<a href="../../index.html">
+Student Tools
+</a>
+homepage to explore more free student calculators.
+
+</p>
+
+
+<p>
+
+You can also use our
+<a href="../percentage-calculator/">
+Percentage Calculator
+</a>
+to calculate exam percentages and marks.
+
+</p>
+
+
+</article>
+
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer class="site-footer">
+
+<div class="container">
+
+<p>
+© 2026 Student Tools. All rights reserved.
+</p>
+
+</div>
+
+</footer>
+
+
+<script>
+
+
+function addSubject() {
+
+    const subjects =
+        document.getElementById("subjects");
+
+    const row =
+        document.createElement("div");
+
+    row.className = "subject-row";
+
+    row.innerHTML = `
+
+        <input
+            type="text"
+            placeholder="Subject name"
+            aria-label="Subject name"
+        >
+
+        <input
+            type="number"
+            placeholder="Grade point"
+            aria-label="Grade point"
+            min="0"
+            max="10"
+            step="0.01"
+        >
+
+        <input
+            type="number"
+            placeholder="Credits"
+            aria-label="Credits"
+            min="0.1"
+            step="0.1"
+        >
+
+        <button
+            class="remove-button"
+            onclick="removeSubject(this)"
+        >
+            Remove
+        </button>
+
+    `;
+
+    subjects.appendChild(row);
+
+}
+
+
+
+function removeSubject(button) {
+
+    const rows =
+        document.querySelectorAll(".subject-row");
+
+    if (rows.length <= 1) {
+
+        return;
+
+    }
+
+    button.parentElement.remove();
+
+}
+
+
+
+function calculateCGPA() {
+
+    const rows =
+        document.querySelectorAll(".subject-row");
+
+    let weightedTotal = 0;
+
+    let totalCredits = 0;
+
+    let valid = true;
+
+
+    rows.forEach(function(row) {
+
+        const inputs =
+            row.querySelectorAll("input");
+
+        const gradePoint =
+            Number(inputs[1].value);
+
+        const credits =
+            Number(inputs[2].value);
+
+
+        if (
+            !Number.isFinite(gradePoint) ||
+            !Number.isFinite(credits) ||
+            gradePoint < 0 ||
+            gradePoint > 10 ||
+            credits <= 0
+        ) {
+
+            valid = false;
+
+            return;
+
+        }
+
+
+        weightedTotal +=
+            gradePoint * credits;
+
+        totalCredits +=
+            credits;
+
+    });
+
+
+    const result =
+        document.getElementById("result");
+
+
+    if (!valid || totalCredits === 0) {
+
+        result.innerHTML =
+            '<span class="error">Please enter a valid grade point (0–10) and credit value for every subject.</span>';
+
+        result.classList.add("show");
+
+        return;
+
+    }
+
+
+    const cgpa =
+        weightedTotal / totalCredits;
+
+
+    result.innerHTML = `
+
+        Your CGPA
+
+        <div class="cgpa-result">
+            ${cgpa.toFixed(2)}
+        </div>
+
+        <p>
+            Total Credits: ${totalCredits}
+        </p>
+
+    `;
+
+    result.classList.add("show");
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
