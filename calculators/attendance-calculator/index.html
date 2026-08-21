@@ -4,773 +4,435 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Attendance Calculator - Free Online Calculator</title>
+<title>Attendance Calculator</title>
 
-<meta name="description" content="Free attendance calculator for students. Calculate attendance percentage, classes needed to reach a target, and additional classes you can miss.">
-
-<meta name="robots" content="index, follow">
-
-<link rel="canonical" href="https://shaurya-portfolio-1.github.io/student-tools/calculators/attendance-calculator/">
-
-<link rel="stylesheet" href="../../style.css">
+<meta name="description" content="Free attendance calculator for students. Calculate current attendance, classes needed to reach a target, and classes you can miss.">
 
 <style>
-.attendance-page {
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f8fafc;
+    color: #172033;
+}
+
+.container {
     max-width: 900px;
-    margin: 0 auto;
+    margin: auto;
+    padding: 25px;
 }
 
-.calculator-card {
-    background: #fff;
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    padding: 32px;
+header {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+header a {
+    text-decoration: none;
+    color: #172033;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 30px;
+    margin-top: 35px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
     margin-top: 30px;
+    border: 1px solid #ddd;
 }
 
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
+label {
     display: block;
-    font-weight: 700;
+    font-weight: bold;
+    margin-top: 20px;
     margin-bottom: 8px;
 }
 
-.form-group input {
+input {
     width: 100%;
-    box-sizing: border-box;
     padding: 14px;
-    border: 1px solid #cbd5e1;
+    font-size: 17px;
+    border: 1px solid #bbb;
     border-radius: 8px;
-    font-size: 16px;
 }
 
-.calculate-button {
+button {
     width: 100%;
-    padding: 15px;
+    padding: 16px;
+    margin-top: 25px;
+    background: #172033;
+    color: white;
     border: none;
     border-radius: 8px;
-    cursor: pointer;
     font-size: 17px;
-    font-weight: 700;
-    background: #111827;
-    color: white;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.result-box {
-    margin-top: 25px;
-    padding: 25px;
+#result {
+    display: none;
+    margin-top: 30px;
+}
+
+.result {
     background: #f1f5f9;
-    border-radius: 14px;
+    padding: 25px;
+    border-radius: 12px;
     text-align: center;
 }
 
-.percentage-result {
-    display: block;
-    font-size: 38px;
-    font-weight: 800;
+.big {
+    font-size: 40px;
+    font-weight: bold;
     margin: 10px 0;
 }
 
-.details-box {
-    margin-top: 25px;
-    padding: 25px;
+.details {
+    margin-top: 20px;
     background: white;
-    border: 1px solid #e2e8f0;
-    border-radius: 14px;
-}
-
-.details-box p {
-    line-height: 1.7;
-}
-
-.explanation-box {
-    margin-top: 25px;
+    border: 1px solid #ddd;
     padding: 25px;
+    border-radius: 12px;
+    line-height: 1.8;
+}
+
+.explanation {
+    margin-top: 20px;
     background: #f8fafc;
-    border-left: 5px solid #111827;
-    border-radius: 10px;
-    line-height: 1.7;
+    padding: 25px;
+    border-left: 5px solid #172033;
+    line-height: 1.8;
 }
 
-.explanation-box h3 {
-    margin-top: 0;
+.formula {
+    background: #eef2f7;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
 }
 
-.formula-box {
-    margin: 20px 0;
-    padding: 20px;
-    background: #f8fafc;
-    border-radius: 10px;
-    overflow-x: auto;
-}
-
-.faq-item {
-    margin-top: 25px;
-}
-
-@media (max-width: 600px) {
-    .calculator-card {
-        padding: 20px;
+@media(max-width:600px) {
+    h1 {
+        font-size: 34px;
     }
 
-    .percentage-result {
-        font-size: 32px;
+    .container {
+        padding: 18px;
+    }
+
+    .card {
+        padding: 20px;
     }
 }
 </style>
-
 </head>
 
 <body>
 
-<header class="site-header">
-<div class="container header-content">
-
-<a href="../../" class="logo">
-Student Tools
-</a>
-
-<nav aria-label="Main navigation">
-<a href="../../#calculators">Calculators</a>
-<a href="../../#study-tools">Study Tools</a>
-<a href="../../#guides">Guides</a>
-</nav>
-
-</div>
+<header>
+    <strong>Student Tools</strong>
+    <br><br>
+    <a href="../../">Home</a>
+    <a href="../percentage-calculator/">Percentage</a>
+    <a href="../cgpa-calculator/">CGPA</a>
 </header>
-
-
-<main>
-
-<section class="hero">
-
-<div class="container attendance-page">
-
-<p class="eyebrow">
-FREE ONLINE ATTENDANCE CALCULATOR
-</p>
-
-<h1>
-Attendance Calculator
-</h1>
-
-<p class="hero-text">
-Calculate your attendance percentage, find how many classes you need to attend to reach your target, and find how many additional classes you can miss.
-</p>
-
-</div>
-
-</section>
-
-
-<section class="section">
-
-<div class="container attendance-page">
-
-<div class="calculator-card">
-
-<h2>
-Attendance Calculator
-</h2>
-
-<p>
-Enter your total classes, attended classes and target attendance percentage.
-</p>
-
-
-<div class="form-group">
-
-<label for="totalClasses">
-Total Classes
-</label>
-
-<input
-type="number"
-id="totalClasses"
-min="1"
-placeholder="Example: 100">
-
-</div>
-
-
-<div class="form-group">
-
-<label for="attendedClasses">
-Attended Classes
-</label>
-
-<input
-type="number"
-id="attendedClasses"
-min="0"
-placeholder="Example: 66">
-
-</div>
-
-
-<div class="form-group">
-
-<label for="targetAttendance">
-Target Attendance (%)
-</label>
-
-<input
-type="number"
-id="targetAttendance"
-min="1"
-max="100"
-step="0.1"
-value="75">
-
-</div>
-
-
-<button
-type="button"
-class="calculate-button"
-onclick="calculateAttendance()">
-
-Calculate Attendance
-
-</button>
-
-
-<div
-id="result"
-class="result-box"
-style="display:none;">
-
-<p>
-Your Current Attendance
-</p>
-
-<span
-id="currentPercentage"
-class="percentage-result">
-
-0.00%
-
-</span>
-
-<div id="message"></div>
-
-</div>
-
-
-<div
-id="details"
-class="details-box"
-style="display:none;">
-
-</div>
-
-
-<div
-id="explanation"
-class="explanation-box"
-style="display:none;">
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="section section-alt">
-
-<div class="container attendance-page">
-
-<h2>
-How to Calculate Attendance Percentage
-</h2>
-
-<p>
-Attendance percentage is calculated by dividing the number of classes attended by the total number of classes and multiplying the result by 100.
-</p>
-
-<div class="formula-box">
-
-<strong>
-Attendance % = (Classes Attended ÷ Total Classes) × 100
-</strong>
-
-</div>
-
-
-<h2>
-Example of Attendance Calculation
-</h2>
-
-<p>
-Suppose you attended 66 classes out of 100 total classes.
-</p>
-
-<div class="formula-box">
-
-<strong>
-66 ÷ 100 × 100 = 66%
-</strong>
-
-</div>
-
-
-<h2>
-How Many Classes Do I Need to Attend?
-</h2>
-
-<p>
-If your current attendance is below your target, this calculator estimates how many additional consecutive classes you need to attend to reach your target.
-</p>
-
-
-<h2>
-How Many Classes Can I Miss?
-</h2>
-
-<p>
-If your current attendance is above your target, the calculator estimates how many additional future classes you can miss while keeping your attendance at or above your target.
-</p>
-
-<p>
-These are <strong>additional future classes</strong>, not classes you have already attended or missed.
-</p>
-
-
-<h2>
-Important: Classes Are Not Days
-</h2>
-
-<p>
-The calculator counts individual classes, not calendar days. If you have five classes in one day, missing one day could mean missing five classes.
-</p>
-
-
-<h2>
-Frequently Asked Questions
-</h2>
-
-
-<div class="faq-item">
-
-<h3>
-Does "classes I can miss" mean future classes?
-</h3>
-
-<p>
-Yes. It means additional future classes you can miss while remaining at or above your target attendance.
-</p>
-
-</div>
-
-
-<div class="faq-item">
-
-<h3>
-Does the calculator count days?
-</h3>
-
-<p>
-No. It counts individual classes or lectures.
-</p>
-
-</div>
-
-
-<div class="faq-item">
-
-<h3>
-What if my attendance is below my target?
-</h3>
-
-<p>
-The calculator tells you approximately how many consecutive classes you need to attend to reach your target.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="section">
-
-<div class="container attendance-page">
-
-<h2>
-Related Student Calculators
-</h2>
-
-<div class="tool-grid">
-
-<a
-href="../percentage-calculator/"
-class="tool-card">
-
-<h3>
-Percentage Calculator
-</h3>
-
-<p>
-Calculate percentage from marks and total marks.
-</p>
-
-</a>
-
-
-<a
-href="../cgpa-calculator/"
-class="tool-card">
-
-<h3>
-CGPA Calculator
-</h3>
-
-<p>
-Calculate CGPA using grade points and credits.
-</p>
-
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-</main>
-
-
-<footer class="site-footer">
 
 <div class="container">
 
+<h1>Attendance Calculator</h1>
+
 <p>
-© 2026 Student Tools. All rights reserved.
+Calculate your current attendance, find how many classes you need to attend
+to reach your target, or find how many future classes you can miss.
 </p>
+
+<div class="card">
+
+<h2>Attendance Calculator</h2>
+
+<label>Total Classes</label>
+<input type="number" id="total" placeholder="Example: 100">
+
+<label>Attended Classes</label>
+<input type="number" id="attended" placeholder="Example: 66">
+
+<label>Target Attendance (%)</label>
+<input type="number" id="target" value="75">
+
+<button onclick="calculate()">Calculate Attendance</button>
+
+<div id="result">
+
+<div class="result">
+
+<div>Your Current Attendance</div>
+
+<div class="big" id="current"></div>
+
+<div id="mainMessage"></div>
 
 </div>
 
-</footer>
+<div class="details" id="details"></div>
+
+<div class="explanation" id="explanation"></div>
+
+</div>
+
+</div>
+
+
+<h2>How Attendance Is Calculated</h2>
+
+<p>
+Attendance percentage is calculated using:
+</p>
+
+<div class="formula">
+Attendance % = (Attended Classes ÷ Total Classes) × 100
+</div>
+
+<h2>Classes You Can Miss</h2>
+
+<p>
+If your current attendance is already above your target, this calculator
+shows how many <strong>additional future classes</strong> you can miss while
+still staying at or above your target.
+</p>
+
+<h2>Classes You Need to Attend</h2>
+
+<p>
+If your current attendance is below your target, the calculator shows how
+many consecutive classes you need to attend to reach your target.
+</p>
+
+<h2>Important</h2>
+
+<p>
+The calculator counts <strong>individual classes</strong>, not days.
+If you have 5 classes in one day and miss the whole day, that means you
+missed 5 classes.
+</p>
+
+</div>
 
 
 <script>
 
-function calculateAttendance() {
+function calculate() {
 
-const totalClasses =
-Number(document.getElementById("totalClasses").value);
+    let total = Number(document.getElementById("total").value);
+    let attended = Number(document.getElementById("attended").value);
+    let target = Number(document.getElementById("target").value);
 
-const attendedClasses =
-Number(document.getElementById("attendedClasses").value);
+    if (total <= 0) {
+        alert("Please enter total classes.");
+        return;
+    }
 
-const targetAttendance =
-Number(document.getElementById("targetAttendance").value);
+    if (attended < 0 || attended > total) {
+        alert("Attended classes cannot be greater than total classes.");
+        return;
+    }
 
-const result =
-document.getElementById("result");
+    if (target <= 0 || target > 100) {
+        alert("Target attendance must be between 1 and 100.");
+        return;
+    }
 
-const currentPercentage =
-document.getElementById("currentPercentage");
+    let current = (attended / total) * 100;
 
-const message =
-document.getElementById("message");
+    document.getElementById("result").style.display = "block";
 
-const details =
-document.getElementById("details");
-
-const explanation =
-document.getElementById("explanation");
+    document.getElementById("current").innerText =
+        current.toFixed(2) + "%";
 
 
-if (!Number.isFinite(totalClasses) || totalClasses <= 0) {
+    /* CURRENT ATTENDANCE IS ABOVE TARGET */
 
-alert("Please enter a valid total number of classes.");
+    if (current >= target) {
 
-return;
+        let targetDecimal = target / 100;
+
+        let canMiss = Math.floor(
+            (attended / targetDecimal) - total
+        );
+
+        if (canMiss < 0) {
+            canMiss = 0;
+        }
+
+        let newTotal = total + canMiss;
+
+        let finalAttendance =
+            (attended / newTotal) * 100;
+
+
+        document.getElementById("mainMessage").innerHTML =
+            "<p>You are currently meeting your target.</p>" +
+            "<p><strong>You can miss " +
+            canMiss +
+            " additional classes.</strong></p>";
+
+
+        document.getElementById("details").innerHTML =
+
+            "<strong>Attendance Details</strong>" +
+
+            "<p>Total classes: " + total + "</p>" +
+
+            "<p>Attended classes: " + attended + "</p>" +
+
+            "<p>Current attendance: " +
+            current.toFixed(2) + "%</p>" +
+
+            "<p>Target attendance: " +
+            target.toFixed(2) + "%</p>" +
+
+            "<p>Additional classes you can miss: " +
+            canMiss + "</p>";
+
+
+        document.getElementById("explanation").innerHTML =
+
+            "<h3>How this works</h3>" +
+
+            "<p>You attended <strong>" +
+            attended +
+            "</strong> classes out of <strong>" +
+            total +
+            "</strong>.</p>" +
+
+            "<p>Your current attendance is <strong>" +
+            current.toFixed(2) +
+            "%</strong>.</p>" +
+
+            "<p>You can miss <strong>" +
+            canMiss +
+            " additional future classes</strong> and still remain at or above your target.</p>" +
+
+            "<div class='formula'>" +
+
+            attended +
+            " ÷ " +
+            newTotal +
+            " × 100 = " +
+            finalAttendance.toFixed(2) +
+            "%" +
+
+            "</div>" +
+
+            "<p>So after missing those classes, your attendance would be approximately <strong>" +
+            finalAttendance.toFixed(2) +
+            "%</strong>.</p>";
+    }
+
+
+    /* CURRENT ATTENDANCE IS BELOW TARGET */
+
+    else {
+
+        let targetDecimal = target / 100;
+
+        let needed = Math.ceil(
+            (targetDecimal * total - attended) /
+            (1 - targetDecimal)
+        );
+
+        let newAttended = attended + needed;
+
+        let newTotal = total + needed;
+
+        let finalAttendance =
+            (newAttended / newTotal) * 100;
+
+
+        document.getElementById("mainMessage").innerHTML =
+
+            "<p>Your attendance is below your target.</p>" +
+
+            "<p><strong>You need to attend " +
+            needed +
+            " more consecutive classes.</strong></p>";
+
+
+        document.getElementById("details").innerHTML =
+
+            "<strong>Attendance Details</strong>" +
+
+            "<p>Total classes: " +
+            total + "</p>" +
+
+            "<p>Attended classes: " +
+            attended + "</p>" +
+
+            "<p>Current attendance: " +
+            current.toFixed(2) + "%</p>" +
+
+            "<p>Target attendance: " +
+            target.toFixed(2) + "%</p>" +
+
+            "<p>Additional classes you need to attend: " +
+            needed + "</p>";
+
+
+        document.getElementById("explanation").innerHTML =
+
+            "<h3>How this works</h3>" +
+
+            "<p>You currently attended <strong>" +
+            attended +
+            "</strong> out of <strong>" +
+            total +
+            "</strong> classes.</p>" +
+
+            "<p>Your current attendance is <strong>" +
+            current.toFixed(2) +
+            "%</strong>, but your target is <strong>" +
+            target.toFixed(2) +
+            "%</strong>.</p>" +
+
+            "<p>You need to attend <strong>" +
+            needed +
+            " additional consecutive classes</strong> without missing another class.</p>" +
+
+            "<div class='formula'>" +
+
+            newAttended +
+            " ÷ " +
+            newTotal +
+            " × 100 = " +
+            finalAttendance.toFixed(2) +
+            "%" +
+
+            "</div>" +
+
+            "<p>After attending those classes, your attendance will be approximately <strong>" +
+            finalAttendance.toFixed(2) +
+            "%</strong>.</p>";
+    }
 
 }
 
+</script>
 
-if (
-!Number.isFinite(attendedClasses) ||
-attendedClasses < 0 ||
-attendedClasses > totalClasses
-) {
-
-alert("Attended classes cannot be greater than total classes.");
-
-return;
-
-}
-
-
-if (
-!Number.isFinite(targetAttendance) ||
-targetAttendance <= 0 ||
-targetAttendance > 100
-) {
-
-alert("Target attendance must be between 1% and 100%.");
-
-return;
-
-}
-
-
-const current =
-(attendedClasses / totalClasses) * 100;
-
-
-currentPercentage.textContent =
-current.toFixed(2) + "%";
-
-result.style.display = "block";
-
-
-/* CURRENT ATTENDANCE IS ABOVE TARGET */
-
-if (current >= targetAttendance) {
-
-const target =
-targetAttendance / 100;
-
-const maximumMisses =
-Math.max(
-0,
-Math.floor(
-(attendedClasses / target) - totalClasses + 0.0000001
-)
-);
-
-const futureTotal =
-totalClasses + maximumMisses;
-
-const futurePercentage =
-(attendedClasses / futureTotal) * 100;
-
-
-message.innerHTML =
-"<p>You are currently meeting your target attendance.</p>";
-
-
-details.innerHTML =
-
-"<p><strong>Total classes:</strong> "
-+ totalClasses
-+ "</p>"
-
-+ "<p><strong>Attended classes:</strong> "
-+ attendedClasses
-+ "</p>"
-
-+ "<p><strong>Current attendance:</strong> "
-+ current.toFixed(2)
-+ "%</p>"
-
-+ "<p><strong>Target attendance:</strong> "
-+ targetAttendance.toFixed(2)
-+ "%</p>"
-
-+ "<p><strong>Additional classes you can miss:</strong> "
-+ maximumMisses
-+ "</p>";
-
-details.style.display = "block";
-
-
-explanation.innerHTML =
-
-"<h3>How to understand this result</h3>"
-
-+ "<p>"
-+ "You currently have <strong>"
-+ attendedClasses
-+ " attended classes</strong> out of <strong>"
-+ totalClasses
-+ " total classes</strong>, so your current attendance is <strong>"
-+ current.toFixed(2)
-+ "%</strong>."
-+ "</p>"
-
-+ "<p>"
-+ "Your target attendance is <strong>"
-+ targetAttendance.toFixed(2)
-+ "%</strong>."
-+ "</p>"
-
-+ "<p>"
-+ "You can miss <strong>"
-+ maximumMisses
-+ " additional future classes</strong> while remaining at or above your target."
-+ "</p>"
-
-+ "<p>"
-+ "After missing "
-+ maximumMisses
-+ " classes, you would have <strong>"
-+ attendedClasses
-+ " attended classes</strong> out of <strong>"
-+ futureTotal
-+ " total classes</strong>."
-+ "</p>"
-
-+ "<div class='formula-box'>"
-+ "<strong>"
-+ attendedClasses
-+ " ÷ "
-+ futureTotal
-+ " × 100 = "
-+ futurePercentage.toFixed(2)
-+ "%"
-+ "</strong>"
-+ "</div>"
-
-+ "<p>"
-+ "So your attendance would still be approximately <strong>"
-+ futurePercentage.toFixed(2)
-+ "%</strong>, which meets your <strong>"
-+ targetAttendance.toFixed(2)
-+ "%</strong> target."
-+ "</p>";
-
-
-explanation.style.display = "block";
-
-}
-
-
-/* CURRENT ATTENDANCE IS BELOW TARGET */
-
-else {
-
-const target =
-targetAttendance / 100;
-
-
-if (target === 1) {
-
-message.innerHTML =
-"<p>A 100% target cannot be reached with a finite number of future classes because you have already missed classes.</p>";
-
-details.innerHTML =
-
-"<p><strong>Total classes:</strong> "
-+ totalClasses
-+ "</p>"
-
-+ "<p><strong>Attended classes:</strong> "
-+ attendedClasses
-+ "</p>"
-
-+ "<p><strong>Current attendance:</strong> "
-+ current.toFixed(2)
-+ "%</p>"
-
-+ "<p><strong>Target attendance:</strong> "
-+ targetAttendance.toFixed(2)
-+ "%</p>";
-
-details.style.display = "block";
-
-
-explanation.innerHTML =
-
-"<h3>How to understand this result</h3>"
-
-+ "<p>"
-+ "Because your current attendance is below 100%, you cannot reach exactly 100% attendance by attending a finite number of future classes."
-+ "</p>";
-
-explanation.style.display = "block";
-
-return;
-
-}
-
-
-const requiredClasses =
-Math.ceil(
-(
-target * totalClasses
-- attendedClasses
-)
-/
-(1 - target)
-);
-
-
-const futureAttended =
-attendedClasses + requiredClasses;
-
-const futureTotal =
-totalClasses + requiredClasses;
-
-const futurePercentage =
-(futureAttended / futureTotal) * 100;
-
-
-message.innerHTML =
-
-"<p>"
-+ "You need to attend <strong>"
-+ requiredClasses
-+ " more consecutive classes</strong> to reach your target."
-+ "</p>";
-
-
-details.innerHTML =
-
-"<p><strong>Total classes:</strong> "
-+ totalClasses
-+ "</p>"
-
-+ "<p><strong>Attended classes:</strong> "
-+ attendedClasses
-+ "</p>"
-
-+ "<p><strong>Current attendance:</strong> "
-+ current.toFixed(2)
-+ "%</p>"
-
-+ "<p><strong>Target attendance:</strong> "
-+ targetAttendance.toFixed(2)
-+ "%</p>"
-
-+ "<p><strong>Additional classes you need to attend:</strong> "
-+ requiredClasses
-+ "</p>";
-
-details.style.display = "block";
-
-
-explanation.innerHTML =
-
-"<h3>How to understand this result</h3>"
-
-+ "<p>"
-+ "You currently have <strong>"
-+ attendedClasses
-+ " attended classes</strong> out of <strong>"
-+ totalClasses
-+ " total classes</strong>."
-+ "</p>"
-
-+ "<p>"
-+ "Your current attendance is <strong>"
-+ current.toFixed(2)
-+ "%</strong>, while your target is <strong>"
-+ targetAttendance.toFixed(2)
-+ "%</strong>."
-+ "</p>"
-
-+ "<p>"
-+ "You need to attend <strong>"
-+ requiredClasses
-+ " additional consecutive classes</strong> without missing another
+</body>
+</html>
