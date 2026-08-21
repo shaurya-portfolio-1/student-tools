@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shaurya-portfolio-1.github.io/student-tools/sitemap.xml
