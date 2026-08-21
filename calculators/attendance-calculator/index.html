@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Attendance Calculator - Free Online Calculator</title>
+
+    <meta
+        name="description"
+        content="Free attendance calculator for students. Calculate your current attendance percentage, required classes to reach your target, and how many classes you can miss."
+    >
+
+    <meta name="robots" content="index, follow">
+
+    <link
+        rel="canonical"
+        href="https://shaurya-portfolio-1.github.io/student-tools/calculators/attendance-calculator/"
+    >
+
+    <link rel="stylesheet" href="../../style.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Attendance Calculator",
+        "url": "https://shaurya-portfolio-1.github.io/student-tools/calculators/attendance-calculator/",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "description": "Free online attendance calculator for students."
+    }
+    </script>
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <div class="container header-content">
+
+        <a href="../../" class="logo">
+            Student Tools
+        </a>
+
+        <nav aria-label="Main navigation">
+            <a href="../../#calculators">Calculators</a>
+            <a href="../../#study-tools">Study Tools</a>
+            <a href="../../#guides">Guides</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="hero">
+
+        <div class="container">
+
+            <p class="eyebrow">
+                FREE ONLINE ATTENDANCE CALCULATOR
+            </p>
+
+            <h1>
+                Attendance Calculator
+            </h1>
+
+            <p class="hero-text">
+                Calculate your attendance percentage, find how many
+                classes you need to attend to reach your target, and
+                find how many classes you can miss.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="calculator-card">
+
+                <h2>
+                    Attendance Calculator
+                </h2>
+
+                <p>
+                    Enter your total classes, attended classes and
+                    target attendance percentage.
+                </p>
+
+
+                <div class="form-group">
+
+                    <label for="totalClasses">
+                        Total Classes
+                    </label>
+
+                    <input
+                        type="number"
+                        id="totalClasses"
+                        min="1"
+                        placeholder="Example: 80"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="attendedClasses">
+                        Attended Classes
+                    </label>
+
+                    <input
+                        type="number"
+                        id="attendedClasses"
+                        min="0"
+                        placeholder="Example: 60"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="targetAttendance">
+                        Target Attendance (%)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="targetAttendance"
+                        min="1"
+                        max="100"
+                        step="0.1"
+                        value="75"
+                    >
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="button calculator-button"
+                    onclick="calculateAttendance()"
+                >
+                    Calculate Attendance
+                </button>
+
+
+                <div
+                    id="result"
+                    class="result-box"
+                    style="display: none;"
+                >
+
+                    <p>
+                        Your Current Attendance
+                    </p>
+
+                    <strong id="currentPercentage">
+                        0.00%
+                    </strong>
+
+                    <div id="message"></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="content-card">
+
+                <h2>
+                    Attendance Details
+                </h2>
+
+                <div id="details">
+
+                    <p>
+                        Enter your class details above to calculate
+                        your attendance.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section section-alt">
+
+        <div class="container">
+
+            <h2>
+                How to Calculate Attendance Percentage
+            </h2>
+
+            <p>
+                Attendance percentage is calculated by dividing the
+                number of classes attended by the total number of
+                classes and multiplying the result by 100.
+            </p>
+
+            <div class="formula-box">
+
+                <strong>
+                    Attendance % = (Classes Attended ÷ Total Classes) × 100
+                </strong>
+
+            </div>
+
+
+            <h2>
+                Attendance Calculator Example
+            </h2>
+
+            <p>
+                Suppose a student attended 60 classes out of
+                80 total classes.
+            </p>
+
+            <div class="formula-box">
+
+                <strong>
+                    (60 ÷ 80) × 100 = 75%
+                </strong>
+
+            </div>
+
+            <p>
+                Therefore, the student's attendance is 75%.
+            </p>
+
+
+            <h2>
+                How Many Classes Do I Need to Attend?
+            </h2>
+
+            <p>
+                If your current attendance is below your target,
+                this calculator estimates how many consecutive
+                classes you need to attend to reach your target.
+            </p>
+
+
+            <h2>
+                How Many Classes Can I Miss?
+            </h2>
+
+            <p>
+                If your current attendance is above your target,
+                this calculator estimates how many additional
+                classes you can miss while staying at or above
+                your target percentage.
+            </p>
+
+
+            <h2>
+                Why Is Attendance Important?
+            </h2>
+
+            <p>
+                Schools, colleges and universities may have minimum
+                attendance requirements. Tracking your attendance
+                helps you understand whether you are meeting your
+                required percentage.
+            </p>
+
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+
+            <h3>
+                What is the attendance percentage formula?
+            </h3>
+
+            <p>
+                Attendance percentage is calculated by dividing
+                attended classes by total classes and multiplying
+                the result by 100.
+            </p>
+
+
+            <h3>
+                What does 75% attendance mean?
+            </h3>
+
+            <p>
+                75% attendance means that a student attended
+                75 out of every 100 classes on average.
+            </p>
+
+
+            <h3>
+                Can I calculate the classes needed to reach 75%?
+            </h3>
+
+            <p>
+                Yes. Enter your total classes, attended classes
+                and set your target attendance to 75%.
+            </p>
+
+
+            <h3>
+                Can I calculate how many classes I can miss?
+            </h3>
+
+            <p>
+                Yes. If your current attendance is above your
+                target, the calculator estimates how many more
+                classes you can miss while maintaining the target.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="container">
+
+            <h2>
+                Related Student Calculators
+            </h2>
+
+            <div class="tool-grid">
+
+                <a
+                    href="../percentage-calculator/"
+                    class="tool-card"
+                >
+
+                    <h3>
+                        Percentage Calculator
+                    </h3>
+
+                    <p>
+                        Calculate percentages from obtained marks
+                        and total marks.
+                    </p>
+
+                </a>
+
+
+                <a
+                    href="../cgpa-calculator/"
+                    class="tool-card"
+                >
+
+                    <h3>
+                        CGPA Calculator
+                    </h3>
+
+                    <p>
+                        Calculate CGPA using grade points and
+                        subject credits.
+                    </p>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <p>
+            © 2026 Student Tools. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+function calculateAttendance() {
+
+    const totalClasses =
+        Number(document.getElementById("totalClasses").value);
+
+    const attendedClasses =
+        Number(document.getElementById("attendedClasses").value);
+
+    const targetAttendance =
+        Number(document.getElementById("targetAttendance").value);
+
+    const result =
+        document.getElementById("result");
+
+    const currentPercentage =
+        document.getElementById("currentPercentage");
+
+    const message =
+        document.getElementById("message");
+
+    const details =
+        document.getElementById("details");
+
+
+    if (totalClasses <= 0) {
+
+        alert("Please enter a valid total number of classes.");
+
+        return;
+    }
+
+
+    if (
+        attendedClasses < 0 ||
+        attendedClasses > totalClasses
+    ) {
+
+        alert("Attended classes cannot be greater than total classes.");
+
+        return;
+    }
+
+
+    if (
+        targetAttendance <= 0 ||
+        targetAttendance > 100
+    ) {
+
+        alert("Target attendance must be between 1% and 100%.");
+
+        return;
+    }
+
+
+    const current =
+        (attendedClasses / totalClasses) * 100;
+
+
+    currentPercentage.textContent =
+        current.toFixed(2) + "%";
+
+
+    if (current >= targetAttendance) {
+
+        const target =
+            targetAttendance / 100;
+
+
+        const maximumMisses =
+            Math.floor(
+                (attendedClasses - target * totalClasses) / target
+            );
+
+
+        message.innerHTML =
+            "<p>You are currently meeting your target attendance.</p>";
+
+
+        details.innerHTML =
+            "<p><strong>Total classes:</strong> "
+            + totalClasses
+            + "</p>"
+            + "<p><strong>Attended classes:</strong> "
+            + attendedClasses
+            + "</p>"
+            + "<p><strong>Current attendance:</strong> "
+            + current.toFixed(2)
+            + "%</p>"
+            + "<p><strong>Target attendance:</strong> "
+            + targetAttendance.toFixed(2)
+            + "%</p>"
+            + "<p><strong>Approximate classes you can miss:</strong> "
+            + Math.max(0, maximumMisses)
+            + "</p>";
+
+    } else {
+
+        const target =
+            targetAttendance / 100;
+
+
+        const requiredClasses =
+            Math.ceil(
+                (target * totalClasses - attendedClasses)
+                /
+                (1 - target)
+            );
+
+
+        message.innerHTML =
+            "<p>You need to attend approximately "
+            + requiredClasses
+            + " more consecutive class(es) to reach your target.</p>";
+
+
+        details.innerHTML =
+            "<p><strong>Total classes:</strong> "
+            + totalClasses
+            + "</p>"
+            + "<p><strong>Attended classes:</strong> "
+            + attendedClasses
+            + "</p>"
+            + "<p><strong>Current attendance:</strong> "
+            + current.toFixed(2)
+            + "%</p>"
+            + "<p><strong>Target attendance:</strong> "
+            + targetAttendance.toFixed(2)
+            + "%</p>"
+            + "<p><strong>Classes you need to attend:</strong> "
+            + requiredClasses
+            + "</p>"
+            + "<p>Attend these classes without missing additional "
+            + "classes during this period to reach the target.</p>";
+    }
+
+
+    result.style.display =
+        "block";
+}
+
+</script>
+
+</body>
+
+</html>
