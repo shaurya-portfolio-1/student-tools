@@ -4,17 +4,18 @@
 
     <url>
         <loc>https://shaurya-portfolio-1.github.io/student-tools/</loc>
-        <lastmod>2026-08-21</lastmod>
     </url>
 
     <url>
         <loc>https://shaurya-portfolio-1.github.io/student-tools/calculators/percentage-calculator/</loc>
-        <lastmod>2026-08-21</lastmod>
     </url>
 
     <url>
         <loc>https://shaurya-portfolio-1.github.io/student-tools/calculators/cgpa-calculator/</loc>
-        <lastmod>2026-08-21</lastmod>
+    </url>
+
+    <url>
+        <loc>https://shaurya-portfolio-1.github.io/student-tools/calculators/attendance-calculator/</loc>
     </url>
 
 </urlset>
