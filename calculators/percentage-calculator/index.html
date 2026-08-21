@@ -5,13 +5,23 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Percentage Calculator - Free Online Percentage Calculator</title>
+    <title>
+        Percentage Calculator - Calculate Marks & Percentages Online
+    </title>
 
     <meta
         name="description"
-        content="Free percentage calculator for marks, percentage to marks, percentage increase, percentage decrease and finding what percent one number is of another."
+        content="Free percentage calculator for students. Calculate percentage from marks, find marks from a percentage, and calculate percentage increase or decrease instantly."
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
     >
 
     <link
@@ -19,12 +29,108 @@
         href="https://shaurya-portfolio-1.github.io/student-tools/calculators/percentage-calculator/"
     >
 
+    <!-- Open Graph -->
+
+    <meta
+        property="og:title"
+        content="Percentage Calculator - Calculate Marks & Percentages"
+    >
+
+    <meta
+        property="og:description"
+        content="Calculate percentages, marks, percentage increase and percentage decrease with this free online calculator."
+    >
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:url"
+        content="https://shaurya-portfolio-1.github.io/student-tools/calculators/percentage-calculator/"
+    >
+
+    <meta
+        property="og:site_name"
+        content="Student Tools"
+    >
+
+    <link
+        rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>"
+    >
+
     <link
         rel="stylesheet"
         href="../../style.css"
     >
 
+
+    <!-- FAQ Structured Data -->
+
+    <script type="application/ld+json">
+
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How do I calculate percentage from marks?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Divide the marks obtained by the total marks and multiply the result by 100. For example, 450 out of 600 is (450 ÷ 600) × 100 = 75%."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is 450 out of 600 as a percentage?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "450 out of 600 is 75%."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I calculate marks from a percentage?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Multiply the percentage by the total marks and divide by 100. For example, 75% of 600 marks is 450 marks."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I calculate percentage increase?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Subtract the original value from the new value, divide the difference by the original value, and multiply by 100."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I calculate percentage decrease?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Subtract the new value from the original value, divide the difference by the original value, and multiply by 100."
+                }
+            }
+        ]
+    }
+
+    </script>
+
+
     <style>
+
+        .breadcrumb {
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            text-decoration: none;
+        }
 
         .calculator-tabs {
             display: flex;
@@ -105,10 +211,6 @@
             cursor: pointer;
         }
 
-        .calculate-button:hover {
-            opacity: 0.9;
-        }
-
         .result {
             display: none;
             margin-top: 25px;
@@ -160,6 +262,10 @@
             font-weight: 600;
         }
 
+        .breadcrumb a {
+            color: inherit;
+        }
+
         @media (max-width: 600px) {
 
             .calculator-box {
@@ -188,13 +294,24 @@
 
     <div class="container header-content">
 
-        <a href="../../index.html" class="logo">
+        <a
+            href="../../index.html"
+            class="logo"
+            aria-label="Student Tools home"
+        >
             Student Tools
         </a>
 
-        <nav>
-            <a href="../../index.html">Home</a>
-            <a href="../../index.html#calculators">Calculators</a>
+        <nav aria-label="Main navigation">
+
+            <a href="../../index.html">
+                Home
+            </a>
+
+            <a href="../../index.html#calculators">
+                Calculators
+            </a>
+
         </nav>
 
     </div>
@@ -208,17 +325,43 @@
 
 <div class="container">
 
+
+    <!-- Breadcrumb -->
+
+    <nav
+        class="breadcrumb"
+        aria-label="Breadcrumb"
+    >
+
+        <a href="../../index.html">
+            Student Tools
+        </a>
+
+        <span aria-hidden="true">
+            →
+        </span>
+
+        <span>
+            Percentage Calculator
+        </span>
+
+    </nav>
+
+
     <p class="eyebrow">
-        FREE ONLINE CALCULATOR
+        FREE ONLINE PERCENTAGE CALCULATOR
     </p>
+
 
     <h1>
         Percentage Calculator
     </h1>
 
+
     <p class="section-intro">
-        Calculate percentages, marks, percentage increase,
-        percentage decrease and more with our free percentage calculator.
+        Calculate percentages from marks, find marks from a
+        percentage, and calculate percentage increase or decrease
+        with our free online percentage calculator.
     </p>
 
 
@@ -279,7 +422,8 @@
             </h2>
 
             <p class="calculator-description">
-                Calculate your percentage from obtained marks and total marks.
+                Enter your obtained marks and total marks to
+                calculate your percentage.
             </p>
 
 
@@ -337,7 +481,8 @@
             </h2>
 
             <p class="calculator-description">
-                Find the marks required to achieve a specific percentage.
+                Find how many marks are required to achieve a
+                target percentage.
             </p>
 
 
@@ -350,6 +495,7 @@
                 id="targetPercentage"
                 placeholder="Example: 75"
                 min="0"
+                max="100"
                 step="any"
             >
 
@@ -395,7 +541,8 @@
             </h2>
 
             <p class="calculator-description">
-                Find what percentage one number is of another number.
+                Find what percentage one number represents of
+                another number.
             </p>
 
 
@@ -451,7 +598,7 @@
             </h2>
 
             <p class="calculator-description">
-                Calculate the percentage increase between two numbers.
+                Calculate how much a value has increased in percentage terms.
             </p>
 
 
@@ -509,7 +656,7 @@
             </h2>
 
             <p class="calculator-description">
-                Calculate the percentage decrease between two numbers.
+                Calculate how much a value has decreased in percentage terms.
             </p>
 
 
@@ -562,34 +709,71 @@
 
     <article>
 
+
         <h2>
-            How to Calculate Percentage
+            How to Calculate Percentage from Marks
         </h2>
 
         <p>
-            Percentage represents a number as a fraction of 100.
-            It is commonly used to calculate marks, discounts,
-            increases, decreases and many other values.
+            Percentage is a way of expressing a number out of 100.
+            Students commonly use percentages to calculate exam
+            results, school marks, college marks and test scores.
+        </p>
+
+        <p>
+            To calculate percentage from marks, divide the marks
+            obtained by the total marks and multiply the result by 100.
         </p>
 
 
         <div class="formula">
-
-            Percentage = (Part ÷ Total) × 100
-
+            Percentage = (Obtained Marks ÷ Total Marks) × 100
         </div>
 
 
         <h3>
-            Example: Calculate Percentage from Marks
+            Example: 450 out of 600
         </h3>
 
         <p>
-            If you scored 450 marks out of 600 marks:
+            If you scored 450 marks out of 600:
         </p>
 
         <p>
             (450 ÷ 600) × 100 = 75%
+        </p>
+
+        <p>
+            Therefore, 450 out of 600 is equal to 75%.
+        </p>
+
+
+        <h2>
+            How to Calculate Marks from Percentage
+        </h2>
+
+        <p>
+            If you know the target percentage and total marks,
+            you can calculate the marks required to achieve that
+            percentage.
+        </p>
+
+
+        <div class="formula">
+            Required Marks = (Percentage × Total Marks) ÷ 100
+        </div>
+
+
+        <h3>
+            Example: 75% of 600
+        </h3>
+
+        <p>
+            75% of 600 marks is:
+        </p>
+
+        <p>
+            (75 × 600) ÷ 100 = 450 marks
         </p>
 
 
@@ -597,29 +781,82 @@
             How to Calculate Percentage Increase
         </h2>
 
-        <div class="formula">
+        <p>
+            Percentage increase shows how much a value has increased
+            compared with its original value.
+        </p>
 
+
+        <div class="formula">
             Percentage Increase =
             ((New Value - Original Value) ÷ Original Value) × 100
-
         </div>
+
+
+        <h3>
+            Example: 100 to 150
+        </h3>
+
+        <p>
+            If a value increases from 100 to 150, the increase is 50%.
+        </p>
 
 
         <h2>
             How to Calculate Percentage Decrease
         </h2>
 
-        <div class="formula">
+        <p>
+            Percentage decrease shows how much a value has decreased
+            compared with its original value.
+        </p>
 
+
+        <div class="formula">
             Percentage Decrease =
             ((Original Value - New Value) ÷ Original Value) × 100
-
         </div>
+
+
+        <h3>
+            Example: 200 to 150
+        </h3>
+
+        <p>
+            If a value decreases from 200 to 150, the decrease is 25%.
+        </p>
+
+
+        <h2>
+            Percentage Calculator for Students
+        </h2>
+
+        <p>
+            Students can use this calculator to calculate exam
+            percentages, test scores, marks required for a target
+            percentage and changes between two values.
+        </p>
+
+        <p>
+            For example, if your total marks are 500 and you obtained
+            375 marks, you can calculate your percentage instantly
+            without doing the calculation manually.
+        </p>
 
 
         <h2>
             Frequently Asked Questions
         </h2>
+
+
+        <h3>
+            How do I calculate percentage from marks?
+        </h3>
+
+        <p>
+            Divide obtained marks by total marks and multiply by 100.
+            For example, 450 out of 600 is 75%.
+        </p>
 
 
         <h3>
@@ -632,27 +869,17 @@
 
 
         <h3>
-            How do I calculate percentage from marks?
-        </h3>
-
-        <p>
-            Divide your obtained marks by the total marks and multiply
-            the result by 100.
-        </p>
-
-
-        <h3>
-            How do I find marks from a percentage?
+            How do I calculate marks from a percentage?
         </h3>
 
         <p>
             Multiply the percentage by the total marks and divide
-            the result by 100.
+            by 100. For example, 75% of 600 is 450 marks.
         </p>
 
 
         <h3>
-            What is the formula for percentage increase?
+            How do I calculate percentage increase?
         </h3>
 
         <p>
@@ -662,13 +889,27 @@
 
 
         <h3>
-            What is the formula for percentage decrease?
+            How do I calculate percentage decrease?
         </h3>
 
         <p>
             Subtract the new value from the original value, divide
             the difference by the original value and multiply by 100.
         </p>
+
+
+        <h2>
+            More Student Tools
+        </h2>
+
+        <p>
+            Explore the
+            <a href="../../index.html">
+                Student Tools homepage
+            </a>
+            for more free calculators and study tools.
+        </p>
+
 
     </article>
 
@@ -695,8 +936,6 @@
 
 <script>
 
-
-/* Switch between calculators */
 
 function showCalculator(calculatorId, button) {
 
@@ -730,8 +969,6 @@ function showCalculator(calculatorId, button) {
 }
 
 
-
-/* Marks to Percentage */
 
 function calculateMarksPercentage() {
 
@@ -788,8 +1025,6 @@ function calculateMarksPercentage() {
 
 
 
-/* Percentage to Marks */
-
 function calculateMarksFromPercentage() {
 
     const percentage =
@@ -835,8 +1070,6 @@ function calculateMarksFromPercentage() {
 
 
 
-/* What Percentage is X of Y */
-
 function calculateWhatPercent() {
 
     const x =
@@ -879,8 +1112,6 @@ function calculateWhatPercent() {
 }
 
 
-
-/* Percentage Increase */
 
 function calculateIncrease() {
 
@@ -925,8 +1156,6 @@ function calculateIncrease() {
 }
 
 
-
-/* Percentage Decrease */
 
 function calculateDecrease() {
 
@@ -976,4 +1205,4 @@ function calculateDecrease() {
 
 </body>
 
-    </html>
+</html>
