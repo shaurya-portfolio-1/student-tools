@@ -7,11 +7,11 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Percentage Calculator - Calculate Percentage from Marks</title>
+    <title>Percentage Calculator - Free Online Percentage Calculator</title>
 
     <meta
         name="description"
-        content="Use our free percentage calculator to calculate your percentage from obtained marks and total marks. Get accurate results instantly."
+        content="Free percentage calculator for marks, percentage to marks, percentage increase, percentage decrease and finding what percent one number is of another."
     >
 
     <link
@@ -26,38 +26,80 @@
 
     <style>
 
-        .calculator-box {
-            max-width: 600px;
-            margin: 30px auto;
-            padding: 30px;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            background: #ffffff;
+        .calculator-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 30px 0 20px;
         }
 
-        .calculator-box label {
-            display: block;
-            margin-top: 15px;
-            margin-bottom: 8px;
+        .tab-button {
+            padding: 11px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: #ffffff;
+            color: #1f2937;
+            cursor: pointer;
+            font-size: 14px;
             font-weight: 600;
         }
 
-        .calculator-box input {
+        .tab-button.active {
+            background: #111827;
+            color: #ffffff;
+            border-color: #111827;
+        }
+
+        .calculator-box {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 30px;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            background: #ffffff;
+        }
+
+        .calculator {
+            display: none;
+        }
+
+        .calculator.active {
+            display: block;
+        }
+
+        .calculator h2 {
+            margin-bottom: 8px;
+        }
+
+        .calculator-description {
+            color: #6b7280;
+            margin-bottom: 25px;
+        }
+
+        .calculator label {
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .calculator input {
             width: 100%;
             padding: 14px;
             border: 1px solid #d1d5db;
             border-radius: 8px;
             font-size: 16px;
+            background: #ffffff;
         }
 
         .calculate-button {
             width: 100%;
-            margin-top: 20px;
+            margin-top: 22px;
             padding: 14px;
             border: none;
             border-radius: 8px;
             background: #111827;
-            color: white;
+            color: #ffffff;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
@@ -67,29 +109,36 @@
             opacity: 0.9;
         }
 
-        #result {
+        .result {
+            display: none;
             margin-top: 25px;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 10px;
             background: #f3f4f6;
             text-align: center;
         }
 
-        .formula {
-            margin: 20px 0;
-            padding: 15px;
-            background: #f8fafc;
-            border-left: 4px solid #111827;
-            font-weight: 600;
+        .result.show {
+            display: block;
+        }
+
+        .result-number {
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        .error {
+            color: #b91c1c;
         }
 
         article {
             max-width: 800px;
-            margin: 50px auto 0;
+            margin: 60px auto 0;
         }
 
         article h2 {
-            margin-top: 35px;
+            margin-top: 40px;
             margin-bottom: 12px;
         }
 
@@ -100,6 +149,31 @@
 
         article p {
             margin-bottom: 15px;
+        }
+
+        .formula {
+            margin: 20px 0;
+            padding: 16px;
+            background: #f8fafc;
+            border-left: 4px solid #111827;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+
+            .calculator-box {
+                padding: 20px;
+            }
+
+            .calculator-tabs {
+                flex-direction: column;
+            }
+
+            .tab-button {
+                width: 100%;
+            }
+
         }
 
     </style>
@@ -134,110 +208,413 @@
 
 <div class="container">
 
-
     <p class="eyebrow">
-        FREE STUDENT CALCULATOR
+        FREE ONLINE CALCULATOR
     </p>
-
 
     <h1>
         Percentage Calculator
     </h1>
 
-
     <p class="section-intro">
-        Calculate your percentage from obtained marks and total marks instantly.
+        Calculate percentages, marks, percentage increase,
+        percentage decrease and more with our free percentage calculator.
     </p>
 
 
-    <div class="calculator-box">
+    <!-- Calculator Tabs -->
 
-        <label for="obtained">
-            Obtained Marks
-        </label>
-
-        <input
-            type="number"
-            id="obtained"
-            placeholder="Example: 450"
-            min="0"
-            step="any"
-        >
-
-
-        <label for="total">
-            Total Marks
-        </label>
-
-        <input
-            type="number"
-            id="total"
-            placeholder="Example: 600"
-            min="1"
-            step="any"
-        >
-
+    <div class="calculator-tabs">
 
         <button
-            class="calculate-button"
-            onclick="calculatePercentage()"
+            class="tab-button active"
+            onclick="showCalculator('marks', this)"
         >
-            Calculate Percentage
+            Marks to Percentage
         </button>
 
+        <button
+            class="tab-button"
+            onclick="showCalculator('marksFromPercentage', this)"
+        >
+            Percentage to Marks
+        </button>
 
-        <div id="result">
-            Enter your marks above to calculate your percentage.
-        </div>
+        <button
+            class="tab-button"
+            onclick="showCalculator('whatPercent', this)"
+        >
+            What % is X of Y?
+        </button>
+
+        <button
+            class="tab-button"
+            onclick="showCalculator('increase', this)"
+        >
+            Percentage Increase
+        </button>
+
+        <button
+            class="tab-button"
+            onclick="showCalculator('decrease', this)"
+        >
+            Percentage Decrease
+        </button>
 
     </div>
 
 
+    <div class="calculator-box">
+
+
+        <!-- MARKS TO PERCENTAGE -->
+
+        <div
+            id="marks"
+            class="calculator active"
+        >
+
+            <h2>
+                Marks to Percentage Calculator
+            </h2>
+
+            <p class="calculator-description">
+                Calculate your percentage from obtained marks and total marks.
+            </p>
+
+
+            <label for="obtainedMarks">
+                Obtained Marks
+            </label>
+
+            <input
+                type="number"
+                id="obtainedMarks"
+                placeholder="Example: 450"
+                min="0"
+                step="any"
+            >
+
+
+            <label for="totalMarks">
+                Total Marks
+            </label>
+
+            <input
+                type="number"
+                id="totalMarks"
+                placeholder="Example: 600"
+                min="1"
+                step="any"
+            >
+
+
+            <button
+                class="calculate-button"
+                onclick="calculateMarksPercentage()"
+            >
+                Calculate Percentage
+            </button>
+
+
+            <div
+                id="marksResult"
+                class="result"
+            ></div>
+
+        </div>
+
+
+        <!-- PERCENTAGE TO MARKS -->
+
+        <div
+            id="marksFromPercentage"
+            class="calculator"
+        >
+
+            <h2>
+                Percentage to Marks Calculator
+            </h2>
+
+            <p class="calculator-description">
+                Find the marks required to achieve a specific percentage.
+            </p>
+
+
+            <label for="targetPercentage">
+                Target Percentage
+            </label>
+
+            <input
+                type="number"
+                id="targetPercentage"
+                placeholder="Example: 75"
+                min="0"
+                step="any"
+            >
+
+
+            <label for="maximumMarks">
+                Total Marks
+            </label>
+
+            <input
+                type="number"
+                id="maximumMarks"
+                placeholder="Example: 600"
+                min="1"
+                step="any"
+            >
+
+
+            <button
+                class="calculate-button"
+                onclick="calculateMarksFromPercentage()"
+            >
+                Calculate Required Marks
+            </button>
+
+
+            <div
+                id="marksFromPercentageResult"
+                class="result"
+            ></div>
+
+        </div>
+
+
+        <!-- WHAT PERCENT -->
+
+        <div
+            id="whatPercent"
+            class="calculator"
+        >
+
+            <h2>
+                What Percentage is X of Y?
+            </h2>
+
+            <p class="calculator-description">
+                Find what percentage one number is of another number.
+            </p>
+
+
+            <label for="numberX">
+                Number X
+            </label>
+
+            <input
+                type="number"
+                id="numberX"
+                placeholder="Example: 25"
+                step="any"
+            >
+
+
+            <label for="numberY">
+                Number Y
+            </label>
+
+            <input
+                type="number"
+                id="numberY"
+                placeholder="Example: 100"
+                step="any"
+            >
+
+
+            <button
+                class="calculate-button"
+                onclick="calculateWhatPercent()"
+            >
+                Calculate Percentage
+            </button>
+
+
+            <div
+                id="whatPercentResult"
+                class="result"
+            ></div>
+
+        </div>
+
+
+        <!-- PERCENTAGE INCREASE -->
+
+        <div
+            id="increase"
+            class="calculator"
+        >
+
+            <h2>
+                Percentage Increase Calculator
+            </h2>
+
+            <p class="calculator-description">
+                Calculate the percentage increase between two numbers.
+            </p>
+
+
+            <label for="oldValue">
+                Original Value
+            </label>
+
+            <input
+                type="number"
+                id="oldValue"
+                placeholder="Example: 100"
+                min="0"
+                step="any"
+            >
+
+
+            <label for="newValue">
+                New Value
+            </label>
+
+            <input
+                type="number"
+                id="newValue"
+                placeholder="Example: 150"
+                min="0"
+                step="any"
+            >
+
+
+            <button
+                class="calculate-button"
+                onclick="calculateIncrease()"
+            >
+                Calculate Increase
+            </button>
+
+
+            <div
+                id="increaseResult"
+                class="result"
+            ></div>
+
+        </div>
+
+
+        <!-- PERCENTAGE DECREASE -->
+
+        <div
+            id="decrease"
+            class="calculator"
+        >
+
+            <h2>
+                Percentage Decrease Calculator
+            </h2>
+
+            <p class="calculator-description">
+                Calculate the percentage decrease between two numbers.
+            </p>
+
+
+            <label for="originalValue">
+                Original Value
+            </label>
+
+            <input
+                type="number"
+                id="originalValue"
+                placeholder="Example: 200"
+                min="0"
+                step="any"
+            >
+
+
+            <label for="reducedValue">
+                New Value
+            </label>
+
+            <input
+                type="number"
+                id="reducedValue"
+                placeholder="Example: 150"
+                min="0"
+                step="any"
+            >
+
+
+            <button
+                class="calculate-button"
+                onclick="calculateDecrease()"
+            >
+                Calculate Decrease
+            </button>
+
+
+            <div
+                id="decreaseResult"
+                class="result"
+            ></div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- SEO CONTENT -->
+
     <article>
 
         <h2>
-            How to Calculate Percentage from Marks
+            How to Calculate Percentage
         </h2>
 
         <p>
-            To calculate your percentage, divide your obtained marks
-            by the total marks and multiply the result by 100.
+            Percentage represents a number as a fraction of 100.
+            It is commonly used to calculate marks, discounts,
+            increases, decreases and many other values.
         </p>
 
 
         <div class="formula">
 
-            Percentage = (Obtained Marks ÷ Total Marks) × 100
+            Percentage = (Part ÷ Total) × 100
 
         </div>
 
 
         <h3>
-            Example
+            Example: Calculate Percentage from Marks
         </h3>
 
         <p>
-            Suppose you obtained 450 marks out of 600 marks.
+            If you scored 450 marks out of 600 marks:
         </p>
 
         <p>
-            Percentage = (450 ÷ 600) × 100
-        </p>
-
-        <p>
-            Percentage = 75%
+            (450 ÷ 600) × 100 = 75%
         </p>
 
 
         <h2>
-            How to Use This Percentage Calculator
+            How to Calculate Percentage Increase
         </h2>
 
-        <p>
-            Enter the marks you obtained in the first box.
-            Then enter the total possible marks in the second box.
-            Finally, tap the Calculate Percentage button.
-        </p>
+        <div class="formula">
+
+            Percentage Increase =
+            ((New Value - Original Value) ÷ Original Value) × 100
+
+        </div>
+
+
+        <h2>
+            How to Calculate Percentage Decrease
+        </h2>
+
+        <div class="formula">
+
+            Percentage Decrease =
+            ((Original Value - New Value) ÷ Original Value) × 100
+
+        </div>
 
 
         <h2>
@@ -246,17 +623,7 @@
 
 
         <h3>
-            How do I calculate percentage from marks?
-        </h3>
-
-        <p>
-            Divide the marks you obtained by the total marks and
-            multiply the result by 100.
-        </p>
-
-
-        <h3>
-            What is the percentage of 450 out of 600?
+            What is 450 out of 600 as a percentage?
         </h3>
 
         <p>
@@ -265,12 +632,42 @@
 
 
         <h3>
-            Can I use this calculator for school marks?
+            How do I calculate percentage from marks?
         </h3>
 
         <p>
-            Yes. You can use this calculator for school, college,
-            university and other examination marks.
+            Divide your obtained marks by the total marks and multiply
+            the result by 100.
+        </p>
+
+
+        <h3>
+            How do I find marks from a percentage?
+        </h3>
+
+        <p>
+            Multiply the percentage by the total marks and divide
+            the result by 100.
+        </p>
+
+
+        <h3>
+            What is the formula for percentage increase?
+        </h3>
+
+        <p>
+            Subtract the original value from the new value, divide
+            the difference by the original value and multiply by 100.
+        </p>
+
+
+        <h3>
+            What is the formula for percentage decrease?
+        </h3>
+
+        <p>
+            Subtract the new value from the original value, divide
+            the difference by the original value and multiply by 100.
         </p>
 
     </article>
@@ -298,27 +695,67 @@
 
 <script>
 
-function calculatePercentage() {
+
+/* Switch between calculators */
+
+function showCalculator(calculatorId, button) {
+
+    const calculators =
+        document.querySelectorAll(".calculator");
+
+    const buttons =
+        document.querySelectorAll(".tab-button");
+
+
+    calculators.forEach(function(calculator) {
+
+        calculator.classList.remove("active");
+
+    });
+
+
+    buttons.forEach(function(tabButton) {
+
+        tabButton.classList.remove("active");
+
+    });
+
+
+    document
+        .getElementById(calculatorId)
+        .classList.add("active");
+
+
+    button.classList.add("active");
+}
+
+
+
+/* Marks to Percentage */
+
+function calculateMarksPercentage() {
 
     const obtained =
-        Number(document.getElementById("obtained").value);
+        Number(document.getElementById("obtainedMarks").value);
 
     const total =
-        Number(document.getElementById("total").value);
+        Number(document.getElementById("totalMarks").value);
 
     const result =
-        document.getElementById("result");
+        document.getElementById("marksResult");
 
 
     if (
-        isNaN(obtained) ||
-        isNaN(total) ||
+        !Number.isFinite(obtained) ||
+        !Number.isFinite(total) ||
         obtained < 0 ||
         total <= 0
     ) {
 
         result.innerHTML =
-            "<strong>Please enter valid marks.</strong>";
+            '<span class="error">Please enter valid marks.</span>';
+
+        result.classList.add("show");
 
         return;
     }
@@ -327,7 +764,9 @@ function calculatePercentage() {
     if (obtained > total) {
 
         result.innerHTML =
-            "<strong>Obtained marks cannot be greater than total marks.</strong>";
+            '<span class="error">Obtained marks cannot be greater than total marks.</span>';
+
+        result.classList.add("show");
 
         return;
     }
@@ -338,14 +777,203 @@ function calculatePercentage() {
 
 
     result.innerHTML =
-        "<strong>Your Percentage: " +
+        "Your Percentage" +
+        '<div class="result-number">' +
         percentage.toFixed(2) +
-        "%</strong>";
+        "%</div>";
+
+
+    result.classList.add("show");
 }
+
+
+
+/* Percentage to Marks */
+
+function calculateMarksFromPercentage() {
+
+    const percentage =
+        Number(document.getElementById("targetPercentage").value);
+
+    const total =
+        Number(document.getElementById("maximumMarks").value);
+
+    const result =
+        document.getElementById("marksFromPercentageResult");
+
+
+    if (
+        !Number.isFinite(percentage) ||
+        !Number.isFinite(total) ||
+        percentage < 0 ||
+        percentage > 100 ||
+        total <= 0
+    ) {
+
+        result.innerHTML =
+            '<span class="error">Enter a percentage between 0 and 100 and valid total marks.</span>';
+
+        result.classList.add("show");
+
+        return;
+    }
+
+
+    const marks =
+        (percentage / 100) * total;
+
+
+    result.innerHTML =
+        "Required Marks" +
+        '<div class="result-number">' +
+        marks.toFixed(2) +
+        "</div>";
+
+
+    result.classList.add("show");
+}
+
+
+
+/* What Percentage is X of Y */
+
+function calculateWhatPercent() {
+
+    const x =
+        Number(document.getElementById("numberX").value);
+
+    const y =
+        Number(document.getElementById("numberY").value);
+
+    const result =
+        document.getElementById("whatPercentResult");
+
+
+    if (
+        !Number.isFinite(x) ||
+        !Number.isFinite(y) ||
+        y === 0
+    ) {
+
+        result.innerHTML =
+            '<span class="error">Please enter valid numbers. Y cannot be zero.</span>';
+
+        result.classList.add("show");
+
+        return;
+    }
+
+
+    const percentage =
+        (x / y) * 100;
+
+
+    result.innerHTML =
+        "Answer" +
+        '<div class="result-number">' +
+        percentage.toFixed(2) +
+        "%</div>";
+
+
+    result.classList.add("show");
+}
+
+
+
+/* Percentage Increase */
+
+function calculateIncrease() {
+
+    const oldValue =
+        Number(document.getElementById("oldValue").value);
+
+    const newValue =
+        Number(document.getElementById("newValue").value);
+
+    const result =
+        document.getElementById("increaseResult");
+
+
+    if (
+        !Number.isFinite(oldValue) ||
+        !Number.isFinite(newValue) ||
+        oldValue <= 0 ||
+        newValue < oldValue
+    ) {
+
+        result.innerHTML =
+            '<span class="error">Enter valid values. The new value should be greater than or equal to the original value.</span>';
+
+        result.classList.add("show");
+
+        return;
+    }
+
+
+    const increase =
+        ((newValue - oldValue) / oldValue) * 100;
+
+
+    result.innerHTML =
+        "Percentage Increase" +
+        '<div class="result-number">' +
+        increase.toFixed(2) +
+        "%</div>";
+
+
+    result.classList.add("show");
+}
+
+
+
+/* Percentage Decrease */
+
+function calculateDecrease() {
+
+    const original =
+        Number(document.getElementById("originalValue").value);
+
+    const reduced =
+        Number(document.getElementById("reducedValue").value);
+
+    const result =
+        document.getElementById("decreaseResult");
+
+
+    if (
+        !Number.isFinite(original) ||
+        !Number.isFinite(reduced) ||
+        original <= 0 ||
+        reduced > original
+    ) {
+
+        result.innerHTML =
+            '<span class="error">Enter valid values. The new value should be less than or equal to the original value.</span>';
+
+        result.classList.add("show");
+
+        return;
+    }
+
+
+    const decrease =
+        ((original - reduced) / original) * 100;
+
+
+    result.innerHTML =
+        "Percentage Decrease" +
+        '<div class="result-number">' +
+        decrease.toFixed(2) +
+        "%</div>";
+
+
+    result.classList.add("show");
+}
+
 
 </script>
 
 
 </body>
 
-</html>
+    </html>
